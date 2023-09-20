@@ -1,5 +1,10 @@
+import frontend.HomeScreen;
+import frontend.WindowFrame;
+
 public class Main {
     public static void main(String[] args) throws Exception {
-        System.out.println("Hello, World!");
+        WindowFrame window = new WindowFrame();
+        HomeScreen home = new HomeScreen();
+        home.DrawScreen(window);
     }
 }
