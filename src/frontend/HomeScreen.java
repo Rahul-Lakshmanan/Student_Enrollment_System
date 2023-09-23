@@ -14,14 +14,20 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EtchedBorder;
 
+import backend.HomeHandler;
+
 
 public class HomeScreen {
 
-    JButton[] buttons = {new JButton("Details"), new JButton("ENROLL"), new JButton("View Students")};
+    JFrame window;
+    JButton[] buttons = {new JButton("Details"), new JButton("ENROLL"), 
+                                       new JButton("View Students")};
     JPanel titlePanel = new JPanel();
     JPanel buttonPanel = new JPanel();
 
-    public HomeScreen() {
+    public HomeScreen(JFrame window) {
+        this.window = window;
+
         // title panel
         titlePanel.setLayout(new GridBagLayout());
         titlePanel.setBackground(new Color(WindowFrame.GREY));
@@ -44,12 +50,14 @@ public class HomeScreen {
 
         // make buttons
         short position = 0;
+        HomeHandler buttonFunction = new HomeHandler(window, buttons);
         for (JButton button : buttons) {
             // appearance
             button.setFont(new Font("Arial", Font.BOLD, 15));
             button.setPreferredSize(new Dimension(130, 50));
             button.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
             button.setFocusable(false);
+            button.addActionListener(buttonFunction);
 
             // location on grid
             gbc.gridx = position;
@@ -68,7 +76,7 @@ public class HomeScreen {
         }
     }
 
-    public void DrawScreen(JFrame window) {
+    public void DrawScreen() {
         window.getContentPane().removeAll();
         window.add(titlePanel);
         window.add(buttonPanel);

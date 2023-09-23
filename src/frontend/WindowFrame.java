@@ -19,6 +19,7 @@ public class WindowFrame extends JFrame {
         this.setSize(new Dimension(WINDOW_WIDTH, WINDOW_HEIGHT));
         this.setResizable(false);
         this.getContentPane().setBackground(new Color(LIGHT_GREEN));
+        this.setLayout(null);
 
         // set window icon
         ImageIcon image = new ImageIcon("assets/school_icon.png");
