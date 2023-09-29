@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 
 import frontend.DetailsScreen;
+import frontend.EnrollScreen;
 
 public class HomeHandler implements ActionListener{
 
@@ -25,9 +26,11 @@ public class HomeHandler implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == details) {
-            window.getContentPane().removeAll();
             DetailsScreen detailsScreen = new DetailsScreen(window);
             detailsScreen.DrawScreen();
+        } else if (e.getSource() == enroll) {
+            EnrollScreen enrollScreen = new EnrollScreen(window);
+            enrollScreen.DrawScreen();
         }
     }
     
