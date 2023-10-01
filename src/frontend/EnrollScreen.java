@@ -18,10 +18,14 @@ import javax.swing.border.EtchedBorder;
 
 import backend.Course;
 import backend.EnrollScreenHandler;
+import backend.Student;
 
 
 public class EnrollScreen {
 
+    public static JLabel totalCost = new JLabel();
+
+    Student student = new Student();
     JFrame window;
 
     JPanel studentInfo = new JPanel();
@@ -32,12 +36,10 @@ public class EnrollScreen {
     JTextField lastName = new JTextField("Lastname");
 
     Byte[] gradeNumbers = {9, 10, 11, 12};
-    JComboBox grade = new JComboBox(gradeNumbers);
+    JComboBox grade =  new JComboBox(gradeNumbers);
 
     JButton confirm = new JButton("Confirm");
     JButton cancel = new JButton("Cancel");
-
-    public static JLabel totalCost = new JLabel();
 
 
     public EnrollScreen(JFrame window) {
@@ -70,8 +72,9 @@ public class EnrollScreen {
         grade.setPreferredSize(new Dimension(45, 30));
         studentInfo.add(grade, gbc);
 
-        firstName.addFocusListener(new EnrollScreenHandler(firstName));
-        lastName.addFocusListener(new EnrollScreenHandler(lastName));
+        firstName.addFocusListener(new EnrollScreenHandler(firstName, student));
+        lastName.addFocusListener(new EnrollScreenHandler(lastName, student));
+        grade.addActionListener(new EnrollScreenHandler(grade, student));
 
         // classes panel
         classes.setLayout(new GridBagLayout());
@@ -97,22 +100,28 @@ public class EnrollScreen {
         classes.add(cost, gbc);
 
         // add classes
-        Course history = new Course("HIS 101", "American History 1700 - 1900", (short) 100, classes);
+        Course history = new Course("HIS 101", "American History 1700 - 1900", 
+                                    (short) 100, classes, student);
         AddCourseLabels(history, gbc, (byte) 1);
     
-        Course math = new Course("MAT 108", "Discrete Mathematics", (short) 110, classes);
+        Course math = new Course("MAT 108", "Discrete Mathematics", 
+                                (short) 110, classes, student);
         AddCourseLabels(math, gbc, (byte) 2);
 
-        Course writing = new Course("UWP 101", "Advanced Composition Writing", (short) 120, classes);
+        Course writing = new Course("UWP 101", "Advanced Composition Writing", 
+                                    (short) 120, classes, student);
         AddCourseLabels(writing, gbc, (byte) 3);
         
-        Course cs = new Course("ECS 152A", "Computer Networks", (short) 150, classes);
+        Course cs = new Course("ECS 152A", "Computer Networks", 
+                                (short) 150, classes, student);
         AddCourseLabels(cs, gbc, (byte) 4);
 
-        Course programming = new Course("ECS 140A", "Programming Languages", (short) 150, classes);
+        Course programming = new Course("ECS 140A", "Programming Languages", 
+                                        (short) 150, classes, student);
         AddCourseLabels(programming, gbc, (byte) 5);
 
-        Course research = new Course("ECS 199", "HPC Research Lab", (short) 200, classes);
+        Course research = new Course("ECS 199", "HPC Research Lab", 
+                                    (short) 200, classes, student);
         AddCourseLabels(research, gbc, (byte) 6);
 
         // total cost
@@ -139,7 +148,7 @@ public class EnrollScreen {
         cancel.setForeground(Color.red);
         cancel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
         cancel.setFocusable(false);
-        cancel.addActionListener(new EnrollScreenHandler(window, cancel));
+        cancel.addActionListener(new EnrollScreenHandler(cancel, window, student));
         buttons.add(cancel, buttonConstraints);
 
         buttonConstraints.gridx = 1;
@@ -149,7 +158,7 @@ public class EnrollScreen {
         confirm.setForeground(Color.green);
         confirm.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
         confirm.setFocusable(false);
-        confirm.addActionListener(new EnrollScreenHandler(window, confirm));
+        confirm.addActionListener(new EnrollScreenHandler(confirm, window, student));
         buttons.add(confirm, buttonConstraints);
     }
 

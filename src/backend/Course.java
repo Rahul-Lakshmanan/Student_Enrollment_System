@@ -9,19 +9,20 @@ import javax.swing.JPanel;
 
 public class Course {
 
+    public static short attendanceCost = 0;
+
     private JLabel code;
     private JLabel name;
     private JLabel costLabel;
     private short cost;
     private JCheckBox checkBox;
-    public static short attendanceCost = 0;
 
 
-    public Course(String code, String name, short cost, JPanel panel) {
+    public Course(String code, String name, short cost, JPanel panel, Student student) {
         this.checkBox = new JCheckBox();
         this.checkBox.setFocusable(false);
         this.checkBox.setOpaque(false);
-        this.checkBox.addActionListener(new EnrollScreenHandler(panel, this));
+        this.checkBox.addActionListener(new EnrollScreenHandler(this, panel, student));
 
         this.code = new JLabel(code);
         this.code.setFont(new Font("arial", Font.ITALIC, 20));;
