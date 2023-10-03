@@ -4,27 +4,19 @@ import java.util.ArrayList;
 
 public class Student {
 
+    public static int studentIdNumber = 9183810;
+
     private String id;
     private String name;
     private String balance;
     private String grade;
     private ArrayList<Course> classes;
 
-    public static int studentIdNumber = 9183810;
-
+    
     public Student() {
         this.id = String.valueOf(studentIdNumber);
         ++ studentIdNumber;
         classes = new ArrayList<Course>();
-    }
-
-    public Student(String name, String balance, ArrayList<Course> classes) {
-        this.id = String.valueOf(studentIdNumber);
-        ++studentIdNumber;
-        
-        this.name = name;
-        this.balance = balance;
-        this.classes = classes;
     }
 
     public String Get_ID() { return id; }

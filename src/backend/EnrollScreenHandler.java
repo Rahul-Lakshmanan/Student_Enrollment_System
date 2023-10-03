@@ -31,7 +31,6 @@ public class EnrollScreenHandler implements ActionListener, FocusListener {
     private JPanel panel;
     private Course course;
 
-    private boolean isFirstname;
     private boolean isTextfield = false;
     private boolean isButton = false;
     private boolean isCourse = false;
@@ -41,14 +40,10 @@ public class EnrollScreenHandler implements ActionListener, FocusListener {
     public EnrollScreenHandler(JTextField textField, Student student) {  
         this.isTextfield = true;
         this.student = student;
-        if (textField.getText().equals("Firstname")) {
-            this.isFirstname = true;
+        if (textField.getText().equals("Firstname")) 
             EnrollScreenHandler.firstname = textField;
-        }
-        else {
-            this.isFirstname = false;
+        else 
             EnrollScreenHandler.lastname = textField;
-        }
     }
 
     // handles grade combobox
@@ -83,10 +78,11 @@ public class EnrollScreenHandler implements ActionListener, FocusListener {
                 home.DrawScreen();
             }
             if (button.getText().equals("Confirm")) {
-                student.Set_Name(EnrollScreenHandler.firstname.getText() + EnrollScreenHandler.lastname.getText());
+                student.Set_Name(EnrollScreenHandler.firstname.getText() + " " +
+                                 EnrollScreenHandler.lastname.getText());
                 student.Set_Balance(Course.attendanceCost);
                 
-                ConfirmScreen confirmScreen = new ConfirmScreen(window);
+                ConfirmScreen confirmScreen = new ConfirmScreen(window, student);
                 confirmScreen.DrawScreen();
             }
         }
@@ -98,7 +94,7 @@ public class EnrollScreenHandler implements ActionListener, FocusListener {
             }
             else {
                 Course.attendanceCost -= course.GetCost();
-                student.Add_Class(course);
+                student.Remove_Course(course);
             }
             UpdateCost();
         }
