@@ -14,6 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EtchedBorder;
 
+import backend.ConfirmHandler;
 import backend.Course;
 import backend.EnrollScreenHandler;
 import backend.Student;
@@ -120,6 +121,7 @@ public class ConfirmScreen {
         enroll.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
         enroll.setFocusable(false);
         enroll.addActionListener(new EnrollScreenHandler(cancel, window, student));
+        enroll.addActionListener(new ConfirmHandler(enroll, student));
         buttons.add(enroll, buttonConstraints);
     }
 

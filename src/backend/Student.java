@@ -1,21 +1,41 @@
 package backend;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Student {
 
-    public static int studentIdNumber = 9183810;
-
     private String id;
     private String name;
     private String balance;
-    private String grade;
+    private String grade = "9";
     private ArrayList<Course> classes;
 
     
     public Student() {
+        String currentLine;
+        File file = new File("studentDatabase.txt");
+        int studentIdNumber = 9183810;
+
+        // get student id
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader("studentDatabase.txt"))){
+            if (file.length() != 0) {
+                while ((currentLine = bufferedReader.readLine()) != null) {
+                    int firstSpace = currentLine.indexOf(" ");
+                    String lastId = currentLine.substring(0, firstSpace);
+                    studentIdNumber = Integer.parseInt(lastId);
+                }
+                ++studentIdNumber;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         this.id = String.valueOf(studentIdNumber);
-        ++ studentIdNumber;
         classes = new ArrayList<Course>();
     }
 

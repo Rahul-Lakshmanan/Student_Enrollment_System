@@ -1,0 +1,3 @@
+9183810   rahul lakshmanan   11   HIS 101, MAT 108   $210
+9183811   testing this   10   ECS 199, ECS 140A, ECS 152A, UWP 101, MAT 108   $940
+9183812   Firstname Lastname   null   MAT 108, UWP 101   $230
