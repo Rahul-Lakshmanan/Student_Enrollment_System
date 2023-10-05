@@ -1,4 +1,4 @@
-# Project Outline
+# Project Planning Outline
 
 ### Frontend Package
 
