@@ -7,20 +7,27 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
+
+import frontend.DatabaseScreen;
 
 public class ConfirmHandler implements ActionListener{
 
     Student student;
     JButton enroll;
-    public ConfirmHandler(JButton button, Student student) {
+    JFrame window;
+
+    public ConfirmHandler(JButton button, Student student, JFrame window) {
         this.enroll = button;
         this.student = student;
+        this.window = window;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == enroll) {
             try {
+                // save student information to student database
                 FileWriter file = new FileWriter("studentDatabase.txt", true);
                 BufferedWriter bufferedWriter = new BufferedWriter(file);
                 bufferedWriter.write(student.Get_ID() + "   ");
@@ -37,7 +44,12 @@ public class ConfirmHandler implements ActionListener{
                 bufferedWriter.write("   $" + student.Get_Balance() + "\n");
                 bufferedWriter.close();
                 file.close();
-            } catch (IOException e1) {
+
+                // go to database view
+                DatabaseScreen dataScreen = new DatabaseScreen(window);
+                dataScreen.DrawScreen();
+            } 
+            catch (IOException e1) {
                 System.out.println("ERROR: student save failed");
                 e1.printStackTrace();
             }

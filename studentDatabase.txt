@@ -1,3 +1,7 @@
-9183810   rahul lakshmanan   11   HIS 101, MAT 108   $210
-9183811   testing this   10   ECS 199, ECS 140A, ECS 152A, UWP 101, MAT 108   $940
-9183812   Firstname Lastname   null   MAT 108, UWP 101   $230
+9183810   Christopher Nolan   12   UWP 101, HIS 101   $220
+9183811   Christian Bale   10   UWP 101, ECS 140A, HIS 101   $370
+9183812   Matt Damon   11   ECS 152A, ECS 140A, MAT 108, UWP 101   $530
+9183813   Henry Cavill   10   ECS 199, ECS 140A, ECS 152A   $1030
+9183814   Margot Robbie   9   ECS 199, ECS 140A, ECS 152A   $1530
+9183815   Zoe Kravitz   11   HIS 101, MAT 108, ECS 199, ECS 140A   $2090
+9183816   Chris Evans   9   ECS 199, ECS 140A   $2440

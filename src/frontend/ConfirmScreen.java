@@ -121,7 +121,7 @@ public class ConfirmScreen {
         enroll.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
         enroll.setFocusable(false);
         enroll.addActionListener(new EnrollScreenHandler(cancel, window, student));
-        enroll.addActionListener(new ConfirmHandler(enroll, student));
+        enroll.addActionListener(new ConfirmHandler(enroll, student, window));
         buttons.add(enroll, buttonConstraints);
     }
 

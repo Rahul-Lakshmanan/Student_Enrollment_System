@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
+import frontend.DatabaseScreen;
 import frontend.DetailsScreen;
 import frontend.EnrollScreen;
 
@@ -28,9 +29,14 @@ public class HomeHandler implements ActionListener{
         if (e.getSource() == details) {
             DetailsScreen detailsScreen = new DetailsScreen(window);
             detailsScreen.DrawScreen();
-        } else if (e.getSource() == enroll) {
+        } 
+        else if (e.getSource() == enroll) {
             EnrollScreen enrollScreen = new EnrollScreen(window);
             enrollScreen.DrawScreen();
+        }
+        else if (e.getSource() == viewStudents) {
+            DatabaseScreen databaseScreen = new DatabaseScreen(window);
+            databaseScreen.DrawScreen();
         }
     }
     
